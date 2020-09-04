@@ -67,8 +67,8 @@ This leverages the _Quarkus OpenShift_ extension and is only recommended for dev
 
 1. Make sure the latest supported OpenJDK 11 image is imported in OpenShift
     ```zsh
-    oc import-image --confirm openjdk/openjdk-11-rhel7 \
-    --from=registry.access.redhat.com/openjdk/openjdk-11-rhel7 \
+    oc import-image --confirm openjdk-11-ubi8 \
+    --from=registry.access.redhat.com/ubi8/openjdk-11 \
     -n openshift
     ```
 2. Create the `camel-quarkus-http` OpenShift application from the git repository
@@ -76,7 +76,7 @@ This leverages the _Quarkus OpenShift_ extension and is only recommended for dev
     oc new-app https://github.com/jeanNyil/upstream-quarkus-camel-demos.git \
     --context-dir=camel-quarkus-http \
     --name=camel-quarkus-http \
-    --image-stream="openshift/openjdk-11-rhel7"
+    --image-stream="openshift/openjdk-11-ubi8"
     ```
 3. Follow the log of the S2I build
     ```zsh
