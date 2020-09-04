@@ -83,12 +83,12 @@ This leverages the _Quarkus OpenShift_ extension and is only recommended for dev
     oc logs bc/camel-quarkus-http -f
     ```
     ```zsh
-    Cloning "https://github.com/jeanNyil/rh-build-quarkus-camel-demos.git" ...
-        Commit: be8d82141951e547ac05fc7cba2aeaa2f163ee64 (Added Camel-Quarkus-Http demo project)
-        Author: Jean Armand Nyilimbibi <jean.nyilimbibi@gmail.com>
-        Date:   Fri Jul 31 17:41:52 2020 +0200
+    Cloning "https://github.com/jeanNyil/upstream-quarkus-camel-demos.git" ...
+        Commit:	70efd37c8bd29fd799dc3f4b6699aed34742afda (Initial creation)
+        Author:	Jean Armand Nyilimbibi <jean.nyilimbibi@gmail.com>
+        Date:	Fri Sep 4 13:56:39 2020 +0200
     [...]
-    Successfully pushed image-registry.openshift-image-registry.svc:5000/camel-quarkus/camel-quarkus-http@sha256:1d551cc7a9d2aeab55ae202eaef1cc5f39843f72d08939a9e692783670766d33
+    Successfully pushed image-registry.openshift-image-registry.svc:5000/camel-quarkus/camel-quarkus-http-s2i@sha256:a8dfcb3c5ad978825b2b5fdf0b4a98cef1365ebb82666f27927d831e1f757761
     Push successful
     ```
 4. Create a non-secure route to expose the camel-quarkus-http service outside the OpenShift cluster
