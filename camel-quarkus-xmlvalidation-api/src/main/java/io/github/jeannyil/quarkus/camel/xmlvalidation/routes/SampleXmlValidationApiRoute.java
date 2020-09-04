@@ -48,43 +48,22 @@ public class SampleXmlValidationApiRoute extends RouteBuilder {
 			.host("0.0.0.0")
 			.port("8080")
 			.contextPath("/")
+			.clientRequestValidation(true)
             // Add information for the generated Open API Specification
             .apiContextPath("/validateMembershipXML/api-doc")
-            	.apiContextRouteId("api-doc-route")
+				.apiContextRouteId("api-doc-route")
 				.apiProperty("api.title", "Sample XML Validation API")
+				.apiProperty("api.version", "1.0.0-SNAPSHOT")
 				.apiProperty("api.description", "A simple API to test the Camel XML validator component")
 				.apiProperty("api.contact.name", "Jean Nyilimbibi")
+				.apiProperty("api.contact.email", "jean.nyilimbibi@gmail.com")
 				.apiProperty("api.license.name", "MIT License")
 				.apiProperty("api.license.url", "https://opensource.org/licenses/MIT")
 				.apiProperty("cors", "true")
 				.apiProperty("openapi.version", "3.0")
+				.apiProperty("api.specification.contentType.json", "application/json")
+				.apiProperty("api.specification.contentType.yaml", "text/yaml")
 		;
-		
-		/**
-		 * REST endpoint for the Service OpenAPI document 
-		 
-		rest().id("openapi-document-restapi")
-			.produces(MediaType.APPLICATION_JSON)
-			
-			// Gets the OpenAPI document for this service
-			.get("/validateMembershipXML/openapi.json")
-				.id("get-openapi-doc-route")
-				.description("Gets the OpenAPI document for this service")
-				.responseMessage()
-					.code("200")
-					.message("OK")
-					.responseModel(io.github.jeannyil.quarkus.camel.xmlvalidation.models.ValidationResult.class)
-				.endResponseMessage()
-				.route()
-					.log(LoggingLevel.INFO, logName, ">>> ${routeId} - IN: headers:[${headers}] - body:[${body}]").id("log-openapi-doc-request")
-					.setHeader(Exchange.CONTENT_TYPE, constant("application/vnd.oai.openapi+json")).id("set-content-type")
-					.setBody()
-						.constant("resource:classpath:openapi/openapi.json")
-						.id("setBody-for-openapi-document")
-					.log(LoggingLevel.INFO, logName, ">>> ${routeId} - OUT: headers:[${headers}] - body:[${body}]").id("log-openapi-doc-response")
-				.end()
-			.endRest()
-		; */
 		
 		/**
 		 * REST endpoint for the Sample XML Validation RESTful API 
