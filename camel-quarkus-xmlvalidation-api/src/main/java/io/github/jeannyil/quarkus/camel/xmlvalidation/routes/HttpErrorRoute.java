@@ -5,6 +5,8 @@ import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.dataformat.JsonLibrary;
 
+import javax.ws.rs.core.Response;
+
 /* Routes to handle common HTTP errors
 
 /!\ The @ApplicationScoped annotation is required for @Inject and @ConfigProperty to work in a RouteBuilder. 
@@ -25,8 +27,8 @@ public class HttpErrorRoute extends RouteBuilder {
 		from("direct:common-500")
 			.routeId("common-500-http-code-route")
 			.log(LoggingLevel.INFO, logName, ">>> ${routeId} - IN: headers:[${headers}] - body:[${body}]").id("log-common-500-request")
-			.setHeader(Exchange.HTTP_RESPONSE_CODE, constant("500")).id("set-common-500-http-code")
-			.setHeader(Exchange.HTTP_RESPONSE_TEXT, constant("Internal Server Error")).id("set-common-500-http-reason")
+			.setHeader(Exchange.HTTP_RESPONSE_CODE, constant(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode())).id("set-common-500-http-code")
+			.setHeader(Exchange.HTTP_RESPONSE_TEXT, constant(Response.Status.INTERNAL_SERVER_ERROR.getReasonPhrase())).id("set-common-500-http-reason")
 			.setHeader(Exchange.CONTENT_TYPE, constant("application/json")).id("set-500-json-content-type")
 			.setBody()
 				.method("errorResponseHelper", 

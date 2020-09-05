@@ -5,7 +5,7 @@ import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.dataformat.JsonLibrary;
 
-import io.github.jeannyil.quarkus.camel.xmlvalidation.beans.ValidationResultHelper;
+import javax.ws.rs.core.Response;
 
 /* Route that validates a sample XML data against the Membership XML schema.
    Expects the sample XML as a Camel message body.
@@ -40,8 +40,8 @@ public class ValidateMembershipXMLRoute extends RouteBuilder {
 			.handled(true)
 			.maximumRedeliveries(0)
 			.log(LoggingLevel.ERROR, logName, ">>> ${routeId} - Caught exception after XML Schema Validation: ${exception.stacktrace}").id("log-validateMembershipXML-exception")
-			.setHeader(Exchange.HTTP_RESPONSE_CODE, constant("404"))
-			.setProperty(Exchange.HTTP_RESPONSE_TEXT, constant("Bad Request"))
+			.setHeader(Exchange.HTTP_RESPONSE_CODE, constant(Response.Status.BAD_REQUEST.getStatusCode()))
+			.setProperty(Exchange.HTTP_RESPONSE_TEXT, constant(Response.Status.BAD_REQUEST.getReasonPhrase()))
 			.setBody()
 				.method("validationResultHelper", "generateKOValidationResult(${exception.message})")
 				.id("set-KO-validationResult")

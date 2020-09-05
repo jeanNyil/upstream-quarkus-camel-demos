@@ -1,6 +1,7 @@
 package io.github.jeannyil.quarkus.camel.xmlvalidation.routes;
 
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
@@ -86,22 +87,22 @@ public class SampleXmlValidationApiRoute extends RouteBuilder {
 							 "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<p:membership xmlns:p=\"http://www.github.com/jeanNyil/schemas/membership/v1.0\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\n  <p:requestType>API</p:requestType>\n  <p:requestID>5948</p:requestID>\n  <p:memberID>85623617</p:memberID>\n  <p:status>A</p:status>\n  <p:enrolmentDate>2019-06-29</p:enrolmentDate>\n  <p:changedBy>jeanNyil</p:changedBy>\n  <p:forcedLevelCode>69</p:forcedLevelCode>\n  <p:vipOnInvitation>Y</p:vipOnInvitation>\n  <p:startDate>2019-06-29</p:startDate>\n  <p:endDate>2100-06-29</p:endDate>\n</p:membership>")
 				.endParam()
 				.responseMessage()
-					.code("200")
-					.message("OK")
+					.code(Response.Status.OK.getStatusCode())
+					.message(Response.Status.OK.getReasonPhrase())
 					.responseModel(io.github.jeannyil.quarkus.camel.xmlvalidation.models.ValidationResult.class)
 					.example(MediaType.APPLICATION_JSON, 
 							 "{\n    \"validationResult\": {\n        \"status\": \"OK\"\n    }\n}")
 				.endResponseMessage()
 				.responseMessage()
-					.code("404")
-					.message("Bad Request")
+					.code(Response.Status.BAD_REQUEST.getStatusCode())
+					.message(Response.Status.BAD_REQUEST.getReasonPhrase())
 					.responseModel(io.github.jeannyil.quarkus.camel.xmlvalidation.models.ValidationResult.class)
 					.example(MediaType.APPLICATION_JSON, 
 							 "{\n\t\"validationResult\": {\n\t\t\"status\": \"KO\",\n\t\t\"errorMessage\": \"Validation failed for: com.sun.org.apache.xerces.internal.jaxp.validation.SimpleXMLSchema@5f86796e\\nerrors: [\\norg.xml.sax.SAXParseException: cvc-datatype-valid.1.2.1: '20-06-29' is not a valid value for 'date'., Line : 7, Column : 46\\norg.xml.sax.SAXParseException: cvc-type.3.1.3: The value '20-06-29' of element 'p:enrolmentDate' is not valid., Line : 7, Column : 46\\n]. Exchange[ID-jeansmacbookair-home-1561803539861-1-1]\"\n\t}\n}")
 				.endResponseMessage()
 				.responseMessage()
-					.code("500")
-					.message("Internal Server Error")
+					.code(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode())
+					.message(Response.Status.INTERNAL_SERVER_ERROR.getReasonPhrase())
 					.responseModel(ErrorResponse.class)
 					.example(MediaType.APPLICATION_JSON, 
 							 "{\n\t\"error\": {\n\t\t\"id\": \"500\",\n\t\t\"description\": \"Internal Server Error\",\n\t\t\"messages\": [\n\t\t\t\"java.lang.Exception: Mocked error message\"\n\t\t]\n\t}\n}")
