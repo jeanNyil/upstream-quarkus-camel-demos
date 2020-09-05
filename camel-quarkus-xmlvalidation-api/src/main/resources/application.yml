@@ -1,0 +1,47 @@
+# Configuration file
+
+# Camel
+camel:
+    context:
+        name: camel-quarkus-xmlvalidation-api
+
+# Quarkus
+quarkus:
+    banner:
+        enabled: true
+    ssl:
+        native: true
+
+    ## Quarkus OpenShift extension configuration for S2I binary builds
+    kubernetes-client:
+        trust-certs: true
+    s2i:
+        base-jvm-image: registry.access.redhat.com/ubi8/openjdk-11
+        base-native-image: quay.io/quarkus/ubi-quarkus-native-binary-s2i:1.0
+    openshift:
+        expose: true
+        replicas: 2
+        # liveness-probe:
+        #     http-action-path: /health/live
+        #     initial-delay: 0
+        #     period: 30
+        # readiness-probe:
+        #     http-action-path: /health/ready
+        #     initial-delay: 0
+        #     period: 30
+
+    ## Camel Quarkus
+    camel:
+        # Microprofile Camel Health checks
+        # Cf. https://camel.apache.org/camel-quarkus/latest/extensions/microprofile-health.html
+        health:
+            enabled: true
+
+        # Microprofile Camel Metrics
+        # Cf. https://camel.apache.org/camel-quarkus/latest/extensions/microprofile-metrics.html
+        metrics:
+            enable-route-policy: true
+            enable-message-history: false
+            enable-exchange-event-notifier: true
+            enable-route-event-notifier: true
+            enable-camel-context-event-notifier: true
