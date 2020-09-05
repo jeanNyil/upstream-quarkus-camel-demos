@@ -13,4 +13,5 @@ If you want to learn more:
 ### _Apache Camel Quarkus_ project examples:
 
 * [camel-quarkus-http](camel-quarkus-http): exposing a RESTful service using the _Apache Camel Quarkus Platform-HTTP_ extension.
+* [camel-quarkus-jsonvalidation-api](camel-quarkus-jsonvalidation-api): exposing a RESTful service using the _Apache Camel REST DSL_ and validating a sample JSON payload using the _Apache Camel Quarkus JSON Schema Validator_ extension.
 * [camel-quarkus-xmlvalidation-api](camel-quarkus-xmlvalidation-api): exposing a RESTful service using the _Apache Camel REST DSL_ and validating a sample XML payload using the _Apache Camel Quarkus validator_ extension.

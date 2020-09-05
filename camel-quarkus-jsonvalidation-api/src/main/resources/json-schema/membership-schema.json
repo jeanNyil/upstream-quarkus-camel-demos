@@ -1,0 +1,67 @@
+{
+	"title": "Root Type for membership",
+	"description": "Membership data ",
+	"required": [
+		"endDate",
+		"enrolmentDate",
+		"changedBy",
+		"memberID",
+		"requestID",
+		"requestType",
+		"vipOnInvitation"
+	],
+	"type": "object",
+	"properties": {
+		"requestType": {
+			"type": "string"
+		},
+		"requestID": {
+			"format": "int32",
+			"maxLength": 4,
+			"type": "integer"
+		},
+		"memberID": {
+			"format": "int32",
+			"maxLength": 8,
+			"type": "integer"
+		},
+		"status": {
+			"maxLength": 1,
+			"minLength": 1,
+			"enum": [
+				"A",
+				"B",
+				"C"
+			],
+			"type": "string"
+		},
+		"enrolmentDate": {
+			"format": "date",
+			"type": "string"
+		},
+		"changedBy": {
+			"type": "string"
+		},
+		"forcedLevelCode": {
+			"type": "string"
+		},
+		"vipOnInvitation": {
+			"maxLength": 1,
+			"minLength": 1,
+			"enum": [
+				"N",
+				"Y"
+			],
+			"type": "string"
+		},
+		"startDate": {
+			"format": "date",
+			"type": "string"
+		},
+		"endDate": {
+			"format": "date",
+			"type": "string"
+		}
+	},
+	"example": "{\n    \"requestType\": \"API\",\n    \"requestID\": 5948,\n    \"memberID\": 85623617,\n    \"status\": \"A\",\n    \"enrolmentDate\": \"2019-06-16\",\n    \"changedBy\": \"jeanNyil\",\n    \"forcedLevelCode\": null,\n    \"vipOnInvitation\": \"Y\",\n    \"startDate\": \"2019-06-16\",\n    \"endDate\": \"2100-06-16\"\n}"
+}

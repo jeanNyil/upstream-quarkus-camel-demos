@@ -1,0 +1,203 @@
+{
+	"info": {
+		"_postman_id": "4da66c85-0966-4c43-98d7-c7173693d326",
+		"name": "Camel-Quarkus-JsonValidation-Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "validateOKMembershipJSON",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"requestType\": \"API\",\n    \"requestID\": 5948,\n    \"memberID\": 85623617,\n    \"status\": \"A\",\n    \"enrolmentDate\": \"2020-09-05\",\n    \"changedBy\": \"JaLiLa\",\n    \"forcedLevelCode\": \"69\",\n    \"vipOnInvitation\": \"Y\",\n    \"startDate\": \"2020-09-05\",\n    \"endDate\": \"2100-09-05\"\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/validateMembershipJSON",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"validateMembershipJSON"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "validateKOMembershipJSON",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"requestType\": \"API\",\n    \"requestID\": 5948,\n    \"memberID\": 85623617,\n    \"status\": \"BADSTATUS\",\n    \"enrolmentDate\": \"2020-09-05\",\n    \"changedBy\": \"jeanNyil\",\n    \"vipOnInvitation\": \"Y\",\n    \"startDate\": \"2020-09-05\",\n    \"endDate\": \"2100-09-05\"\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/validateMembershipJSON",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"validateMembershipJSON"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get OpenAPI Specification - JSON",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/validateMembershipJSON/api-doc/openapi.json",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"validateMembershipJSON",
+						"api-doc",
+						"openapi.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get OpenAPI Specification - YAML",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "user-key",
+						"type": "text",
+						"value": "d6f621f2ddf31377967537714ee1fcbe",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/validateMembershipJSON/api-doc/openapi.yaml",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"validateMembershipJSON",
+						"api-doc",
+						"openapi.yaml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Microprofile Camel Metrics",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/metrics",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"metrics"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Microprofile Camel Health Checks",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/health",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Microprofile Camel Health Liveness Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/health/live",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"health",
+						"live"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Microprofile Camel Health Readiness Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/health/ready",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"health",
+						"ready"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
