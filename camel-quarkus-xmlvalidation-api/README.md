@@ -83,11 +83,11 @@ This leverages the _Quarkus OpenShift_ extension and is only recommended for dev
     ```
     ```zsh
     Cloning "https://github.com/jeanNyil/upstream-quarkus-camel-demos.git" ...
-            Commit: 4911116e6cb9ace7304c7f8b77322b60d3b591f0 (Updated README)
+            Commit: 33b40b3149e109557b8587c14d4aaa88cca5a590 (Updated README)
             Author: Jean Armand Nyilimbibi <jean.nyilimbibi@gmail.com>
-            Date:   Mon Sep 7 20:34:02 2020 +0200
+            Date:   Mon Sep 7 21:14:41 2020 +0200
     [...]
-    Successfully pushed image-registry.openshift-image-registry.svc:5000/camel-quarkus/Camel-Quarkus-XmlValidation-Api.postman_collection-s2i@sha256:f4d91fcda670edd3dd1a8dfa4860fbfbb3cf43a590c67addbec9dc240f4672d4
+    Successfully pushed image-registry.openshift-image-registry.svc:5000/camel-quarkus/camel-quarkus-xmlvalidation-api-s2i@sha256:024fcbaf80ec49e5f044f9af96e176e5fb16ba3325e7d6cee5d70c4884289a69
     Push successful
     ```
 4. Create a non-secure route to expose the `Camel-Quarkus-XmlValidation-Api.postman_collection` service outside the OpenShift cluster
@@ -105,13 +105,13 @@ This leverages the _Quarkus OpenShift_ extension and is only recommended for dev
     ```zsh
     curl -w '\n' -X POST -H 'Content-Type: text/xml' \
     -d '<?xml version="1.0" encoding="UTF-8"?><p:membership xmlns:p="http://www.github.com/jeanNyil/schemas/membership/v1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><p:requestType>API</p:requestType><p:requestID>5948</p:requestID><p:memberID>85623617</p:memberID><p:status>A</p:status><p:enrolmentDate>2020-09-05</p:enrolmentDate><p:changedBy>JaLiLa</p:changedBy><p:forcedLevelCode>69</p:forcedLevelCode><p:vipOnInvitation>Y</p:vipOnInvitation><p:startDate>2020-09-05</p:startDate><p:endDate>2100-09-05</p:endDate></p:membership>' \
-    $URL/validateMembershipJSON
+    $URL/validateMembershipXML
     ```
     ```json
     {
-    "validationResult" : {
-        "status" : "OK"
-    }
+        "validationResult" : {
+            "status" : "OK"
+        }
     }
     ```
 
@@ -128,16 +128,16 @@ This leverages the _Quarkus OpenShift_ extension and is only recommended for dev
                 "status": "UP"
             },
             {
-                "name": "camel-readiness-checks",
-                "status": "UP"
-            },
-            {
                 "name": "camel-context-check",
                 "status": "UP",
                 "data": {
                     "contextStatus": "Started",
                     "name": "camel-1"
                 }
+            },
+            {
+                "name": "camel-readiness-checks",
+                "status": "UP"
             }
         ]
     }
@@ -188,15 +188,15 @@ This leverages the _Quarkus OpenShift_ extension and is only recommended for dev
     [...]
     # HELP application_camel_context_exchanges_total The total number of exchanges for a route or Camel Context
     # TYPE application_camel_context_exchanges_total counter
-    application_camel_context_exchanges_total{camelContext="camel-1"} 20.0
+    application_camel_context_exchanges_total{camelContext="camel-1"} 30.0
     [...]
     # HELP application_camel_route_exchanges_total The total number of exchanges for a route or Camel Context
     # TYPE application_camel_route_exchanges_total counter
     application_camel_route_exchanges_total{camelContext="camel-1",routeId="api-doc-route"} 0.0
     application_camel_route_exchanges_total{camelContext="camel-1",routeId="common-500-http-code-route"} 0.0
     application_camel_route_exchanges_total{camelContext="camel-1",routeId="custom-http-error-route"} 0.0
-    application_camel_route_exchanges_total{camelContext="camel-1",routeId="json-validation-api-route"} 20.0
-    application_camel_route_exchanges_total{camelContext="camel-1",routeId="validate-membership-json-route"} 20.0
+    application_camel_route_exchanges_total{camelContext="camel-1",routeId="validate-membership-xml-route"} 30.0
+    application_camel_route_exchanges_total{camelContext="camel-1",routeId="xml-validation-api-route"} 30.0
     [...]
     ```
 

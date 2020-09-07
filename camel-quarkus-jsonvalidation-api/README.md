@@ -110,9 +110,9 @@ This leverages the _Quarkus OpenShift_ extension and is only recommended for dev
     ```
     ```json
     {
-    "validationResult" : {
-        "status" : "OK"
-    }
+        "validationResult" : {
+            "status" : "OK"
+        }
     }
     ```
 
