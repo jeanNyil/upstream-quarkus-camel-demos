@@ -52,7 +52,6 @@ This leverages the _Quarkus OpenShift_ extension and is only recommended for dev
 ```zsh
 [...]
 [INFO] [io.quarkus.deployment.pkg.steps.JarResultBuildStep] Building thin jar: /Users/jeannyil/Workdata/myGit/Quarkus/upstream-quarkus-camel-demos/camel-quarkus-jsonvalidation-api/target/camel-quarkus-jsonvalidation-api-1.0.0-SNAPSHOT-runner.jar
-[...]oc 
 [INFO] [io.quarkus.kubernetes.deployment.KubernetesDeploy] Kubernetes API Server at 'https://api.cluster-5d3d.sandbox1856.opentlc.com:6443/' successfully contacted.
 [...]
 [INFO] [io.quarkus.container.image.s2i.deployment.S2iProcessor] Performing s2i binary build with jar on server: https://api.cluster-5d3d.sandbox1856.opentlc.com:6443/ in namespace:camel-quarkus.
@@ -85,11 +84,11 @@ This leverages the _Quarkus OpenShift_ extension and is only recommended for dev
     ```
     ```zsh
     Cloning "https://github.com/jeanNyil/upstream-quarkus-camel-demos.git" ...
-        Commit:	70efd37c8bd29fd799dc3f4b6699aed34742afda (Initial creation)
-        Author:	Jean Armand Nyilimbibi <jean.nyilimbibi@gmail.com>
-        Date:	Fri Sep 4 13:56:39 2020 +0200
+            Commit: 4911116e6cb9ace7304c7f8b77322b60d3b591f0 (Updated README)
+            Author: Jean Armand Nyilimbibi <jean.nyilimbibi@gmail.com>
+            Date:   Mon Sep 7 20:34:02 2020 +0200
     [...]
-    Successfully pushed image-registry.openshift-image-registry.svc:5000/camel-quarkus/camel-quarkus-jsonvalidation-api-s2i@sha256:a8dfcb3c5ad978825b2b5fdf0b4a98cef1365ebb82666f27927d831e1f757761
+    Successfully pushed image-registry.openshift-image-registry.svc:5000/camel-quarkus/camel-quarkus-jsonvalidation-api-s2i@sha256:f4d91fcda670edd3dd1a8dfa4860fbfbb3cf43a590c67addbec9dc240f4672d4
     Push successful
     ```
 4. Create a non-secure route to expose the `camel-quarkus-jsonvalidation-api` service outside the OpenShift cluster
@@ -105,22 +104,16 @@ This leverages the _Quarkus OpenShift_ extension and is only recommended for dev
     ```
 2. Test the `/validateMembershipJSON` endpoint
     ```zsh
-    curl -w '\n' $URL/validateMembershipJSON
+    curl -w '\n' -X POST -H 'Content-Type: application/json' \
+    -d '{"requestType": "API","requestID": 5948,"memberID": 85623617,"status": "A","enrolmentDate": "2020-09-05","changedBy": "JaLiLa","forcedLevelCode": "69","vipOnInvitation": "Y","startDate": "2020-09-05","endDate": "2100-09-05"}' \
+    $URL/validateMembershipJSON
     ```
     ```json
-    [ {
-        "name" : "Apple",
-        "description" : "Winter fruit"
-    }, {
-        "name" : "Pineapple",
-        "description" : "Tropical fruit"
-    }, {
-        "name" : "Mango",
-        "description" : "Tropical fruit"
-    }, {
-        "name" : "Banana",
-        "description" : "Tropical fruit"
-    } ]
+    {
+    "validationResult" : {
+        "status" : "OK"
+    }
+    }
     ```
 
 3. Test the `/health` endpoint
