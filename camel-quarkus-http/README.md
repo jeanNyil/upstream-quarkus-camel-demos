@@ -3,10 +3,10 @@
 This project leverages **Quarkus version 1.7.2**, the Supersonic Subatomic Java Framework.
 
 It exposes the following RESTful service endpoints  using the **Apache Camel Quarkus Platform extension**: 
-- `/fruits` : returns a list of hard-coded fruits (`name` and `description`) in JSON format. It also allows to add a `fruit` though the `POST` HTTP method
+- `/fruits` : returns a list of hard-coded fruits (`name` and `description`) in JSON format. It also allows to add a `fruit` through the `POST` HTTP method
 - `/legumes` : returns a list of hard-coded legumes (`name`and `description`) in JSON format.
-- `/health` : returns the Camel Quarkus MicroProfile metrics 
-- `/metrics` : the Camel Quarkus MicroProfile health checks
+- `/health` : returns the _Camel Quarkus MicroProfile_ health checks
+- `/metrics` : the _Camel Quarkus MicroProfile_ metrics 
 
 ## Prerequisites
 - JDK 11 installed with `JAVA_HOME` configured appropriately
@@ -91,7 +91,7 @@ This leverages the _Quarkus OpenShift_ extension and is only recommended for dev
     Successfully pushed image-registry.openshift-image-registry.svc:5000/camel-quarkus/camel-quarkus-http-s2i@sha256:a8dfcb3c5ad978825b2b5fdf0b4a98cef1365ebb82666f27927d831e1f757761
     Push successful
     ```
-4. Create a non-secure route to expose the camel-quarkus-http service outside the OpenShift cluster
+4. Create a non-secure route to expose the `camel-quarkus-http` service outside the OpenShift cluster
     ```zsh
     oc expose svc/camel-quarkus-http
     ```
