@@ -2,7 +2,7 @@
 
 This repository contains examples of _Apache Camel Quarkus_ projects to demonstrate various features.
 
-All projects leverage **Quarkus version 1.7.2**, the Supersonic Subatomic Java Framework.
+All projects leverage **Quarkus version 1.8.0**, the Supersonic Subatomic Java Framework.
 
 Their purpose is to provide small, specific and working examples that can be used for reference in your own projects.
 
