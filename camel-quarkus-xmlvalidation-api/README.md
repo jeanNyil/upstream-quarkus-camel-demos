@@ -1,6 +1,6 @@
 # Camel-Quarkus-XmlValidation-Api project
 
-This project leverages **Quarkus version 1.8.0**, the Supersonic Subatomic Java Framework.
+This project leverages **Quarkus version 1.8.x**, the Supersonic Subatomic Java Framework.
 
 It exposes the following RESTful service endpoints  using the **Apache Camel Quarkus Platform extension**: 
 - `/validateMembershipXML` : validates a sample `Membership` XML instance through the `POST` HTTP method.
