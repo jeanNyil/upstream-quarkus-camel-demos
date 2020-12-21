@@ -75,9 +75,15 @@
 			"name": "Get OpenAPI Specification - JSON",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
 				"url": {
-					"raw": "http://localhost:8080/validateMembershipJSON/api-doc/openapi.json",
+					"raw": "http://localhost:8080/validateMembershipJSON/api-doc",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -85,8 +91,7 @@
 					"port": "8080",
 					"path": [
 						"validateMembershipJSON",
-						"api-doc",
-						"openapi.json"
+						"api-doc"
 					]
 				}
 			},
@@ -98,14 +103,13 @@
 				"method": "GET",
 				"header": [
 					{
-						"key": "user-key",
-						"type": "text",
-						"value": "d6f621f2ddf31377967537714ee1fcbe",
-						"disabled": true
+						"key": "Accept",
+						"value": "text/yaml",
+						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "http://localhost:8080/validateMembershipJSON/api-doc/openapi.yaml",
+					"raw": "http://localhost:8080/validateMembershipJSON/api-doc",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -113,8 +117,7 @@
 					"port": "8080",
 					"path": [
 						"validateMembershipJSON",
-						"api-doc",
-						"openapi.yaml"
+						"api-doc"
 					]
 				}
 			},
